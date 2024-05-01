@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const ExpertRoutes = require('./routers/ExpertRoutes');
+const ExpertDetails = require('./routers/ExpertDetails')
 const connectDB = require('./db');
 const cors = require('cors');
-
+        
 
 app.use(express.json());
 app.use(cors());
@@ -18,5 +19,6 @@ connectDB()
 })
 
 app.use('/api', ExpertRoutes);
+app.use('/api', ExpertDetails);
 
 app.listen(3000, ()=>console.log('listening to the server on port 3000'));
