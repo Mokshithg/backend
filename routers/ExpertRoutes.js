@@ -8,4 +8,10 @@ router.post('/new-technicalExpert', ExpertController.addExperts);
 router.put('/updated_expert/:id', ExpertController.updateExpert);
 router.delete('/delete_expert/:id', ExpertController.deleteExpert);
 
+
+
+
+router.get('/expertCards/:id', ExpertController.getCardsid);
+router.get('/expertCards', ExpertController.getCardsAll);
+
 module.exports = router;

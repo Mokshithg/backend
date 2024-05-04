@@ -1,9 +1,9 @@
-const Expert = require('../models/Expert');
+// const Expert = require('../models/Expert');
 
 const experts = [
     {
         id: 1,
-        profile_pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRypi0arSA0L18J1717UWnWL6uNVNPQed1VpA&s",
+        profile_pic: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         short_work_desc: "Expertise in building real-time collaboration tools",
         username: "Dinesh Karthik",
         rating: 4.9,
@@ -13,43 +13,43 @@ const experts = [
     },
     {
         id: 2,
-        profile_pic: "https://example.com/profile2.jpg",
-        short_work_desc: "Backend developer with focus on performance optimization",
+        profile_pic: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        short_work_desc: "Video Editing with focus on performance optimization",
         username: "Sara Johnson",
         rating: 4.7,
         no_of_queries_solved: 180,
         currently_solving: 5,
-        full_desc: "Experienced backend developer specializing in performance optimization and database management."
+        full_desc: "Experienced Video Editing specializing in performance optimization and Visualization."
     },
     {
         id: 3,
-        profile_pic: "https://example.com/profile3.jpg",    
-        short_work_desc: "Frontend developer passionate about user experience",
+        profile_pic: "https://images.pexels.com/photos/936090/pexels-photo-936090.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",    
+        short_work_desc: "Graphic Designing passionate about user experience",
         username: "Maxwell Ford",
         rating: 4.8,
         no_of_queries_solved: 210,
         currently_solving: 3,
-        full_desc: "Frontend developer with a strong focus on creating intuitive and engaging user interfaces."
+        full_desc: "Graphic Designing with a strong focus on creating intuitive and engaging graphics."
     },
     {
         id: 4,
-        profile_pic: "https://example.com/profile4.jpg",
-        short_work_desc: "Data scientist specialized in machine learning",
-        username: "Emily Watson",
+        profile_pic: "https://images.pexels.com/photos/11344384/pexels-photo-11344384.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+        short_work_desc: "Creatively specialized in UI Designing",
+        username: "Sophia Lee",
         rating: 4.9,
         no_of_queries_solved: 260,
         currently_solving: 10,
-        full_desc: "Data scientist with expertise in machine learning algorithms and predictive modeling."
+        full_desc: "UI Designer with expertise in color palets and fonts with predictive design interfaces."
     },
     {
         id: 5,
-        profile_pic: "https://example.com/profile5.jpg",
-        short_work_desc: "UI/UX designer focusing on mobile applications",
-        username: "Alexis Lee",
+        profile_pic: "https://images.pexels.com/photos/2204533/pexels-photo-2204533.jpeg",
+        short_work_desc: "Productive backend engineer on server side appications",
+        username: "James Brown",
         rating: 4.6,
         no_of_queries_solved: 150,
         currently_solving: 4,
-        full_desc: "Creative UI/UX designer with a passion for crafting delightful mobile experiences."
+        full_desc: "Backend Developer with a passion for crafting delightful functioned server side applications and database management."
     },
     {
         id: 6,
@@ -164,9 +164,9 @@ exports.getDetailsid = async(req,res) => {
     }
 }
 
-exports.getAllExpertDetails = async(req,res)=>{
+exports.getAllCards = async(req,res)=>{
     try {
-        const users = await Expert.find();
+        const users = experts;
         if(!users){
             return res.status(404).json({message : "No experts found"});
         }
@@ -176,6 +176,15 @@ exports.getAllExpertDetails = async(req,res)=>{
         res.status(500).json({ message: 'Server Error' });
     }
 }
+
+
+
+
+
+
+
+
+
 
 exports.getDetails = async(req,res)=>{
     const {id} = req.params;
@@ -190,6 +199,21 @@ exports.getDetails = async(req,res)=>{
         res.status(500).json({message : 'Server Error'});
     }
 }
+
+
+exports.getAllExpertDetails = async(req,res)=>{
+    try{
+        const users = await Expert.find();
+        if(!users){
+            return res.status(404).json({message : 'No Experts found'});
+        }
+        res.json(users);
+    }catch(err){
+        console.error(err);
+        res.status(500).json({message : 'Server Error'});
+        }
+}
+
 
 exports.createExpertProfile = async(req,res) => {
     const {profile_pic, short_work_desc, username, rating, no_of_queries_solved, currently_solving, full_desc } = req.body;
