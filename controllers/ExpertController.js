@@ -31,7 +31,7 @@ const expertCards = [
       },
       {
         id: 3,
-        image: "https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?auto=compress&cs=tinysrgb&w=600",
+        image: "https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         profile_pic: "https://images.pexels.com/photos/936090/pexels-photo-936090.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         username: "Maxwell Ford",
         desc: "I'm a creative graphic designer with a keen eye for detail. I specialize in creating impactful visuals and branding materials that resonate with audiences.",
@@ -59,7 +59,7 @@ const expertCards = [
       },
       {
         id: 5,
-        image: "https://images.pexels.com/photos/5955131/pexels-photo-5955131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        image: "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         profile_pic: "https://images.pexels.com/photos/2204533/pexels-photo-2204533.jpeg",
         username: "James Brown",
         desc: "I'm a proficient backend developer with a focus on building scalable and efficient server-side applications. I specialize in database management and API development.",
@@ -109,7 +109,14 @@ exports.getCardsAll = async (req, res) => {
 
 exports.getAllExperts = async(req,res)=>{
     try{
-        const experts = await TechnicalExperts.find();
+        const experts = await TechnicalExperts.find({
+            username : 1,
+            image : 1,
+            profile_pic : 1,
+            rating : 1,
+            expertise : 1,
+            avg_waiting_time : 1 
+        })
         res.json(experts);
     }catch(err){
         console.error(err);
