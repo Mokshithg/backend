@@ -45,7 +45,7 @@ const expertCards = [
       },
       {
         id: 4,
-        image: "https://images.pexels.com/photos/3184612/pexels-photo-3184612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        image: "https://images.pexels.com/photos/4491459/pexels-photo-4491459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         profile_pic: "https://images.pexels.com/photos/11344384/pexels-photo-11344384.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         username: "Sophia Lee",
         desc: "I'm a skilled UI/UX designer with a focus on creating intuitive and user-friendly interfaces. I specialize in wireframing, prototyping, and visual design.",
