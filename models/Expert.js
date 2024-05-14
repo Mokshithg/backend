@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   image : {
@@ -31,6 +32,10 @@ const userSchema = new mongoose.Schema({
     required : [true, "please enter your username"],
     unique : true,
   },
+  password : {
+    type : String,
+    required : true
+  },
   rating : {
     type : Number,
     required : false,
@@ -57,5 +62,14 @@ const userSchema = new mongoose.Schema({
     required : [true, "please enter the start price"],
   }
 })
+
+userSchema.pre('save', async function(next){
+  if (this.isNew || this.isModified('password')){
+    const saltRounds = 10;
+    const handlePasswords = await bcrypt.hash(this.password, saltRounds);
+    this.password = handlePasswords;
+  }
+  next();
+});
 
 module.exports = mongoose.model('Expert', userSchema);

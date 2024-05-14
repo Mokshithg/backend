@@ -1,4 +1,4 @@
-// const TechnicalExperts = require('../models/TechnicalExperts');
+const TechnicalExperts = require('../models/TechnicalExperts');
 
 const expertCards = [
     {
